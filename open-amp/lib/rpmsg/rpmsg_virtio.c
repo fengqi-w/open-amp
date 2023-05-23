@@ -563,6 +563,8 @@ static int rpmsg_virtio_ns_callback(struct rpmsg_endpoint *ept, void *data,
 	uint32_t dest;
 	char name[RPMSG_NAME_SIZE];
 
+	metal_log(METAL_LOG_DEBUG, "%s:%d, rvdev->rvq\r\n", __func__, __LINE__);
+
 	(void)priv;
 	(void)src;
 
@@ -654,6 +656,8 @@ int rpmsg_init_vdev_with_config(struct rpmsg_virtio_device *rvdev,
 	rdev->ops.get_tx_payload_buffer = rpmsg_virtio_get_tx_payload_buffer;
 	rdev->ops.send_offchannel_nocopy = rpmsg_virtio_send_offchannel_nocopy;
 	role = rpmsg_virtio_get_role(rvdev);
+
+	metal_log(METAL_LOG_DEBUG, "%s:%d, rvdev->rvq\r\n", __func__, __LINE__);
 
 #ifndef VIRTIO_DEVICE_ONLY
 	if (role == RPMSG_HOST) {
